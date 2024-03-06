@@ -30,7 +30,7 @@ const questions = [
     },
 
     {
-        type: 'type',
+        type: 'input',
         name: 'usage',
         message: 'How do you use this project?',
     },
@@ -48,7 +48,7 @@ const questions = [
 
     {
         type: 'input',
-        name: 'credit',
+        name: 'credits',
         message: 'What resources were used to create this project?',
     },
     {
@@ -68,8 +68,8 @@ const questions = [
     },
 ];
 
-//Function to create
-function generateReadMe(answers) {
+//Function to generate README
+function createReadMe(answers) {
     const readMeContent = `
     # ${answers.title} ${renderLicenseBadge(answers.license)}
     
@@ -79,10 +79,10 @@ function generateReadMe(answers) {
     
     ## Directory
     
-    1. [Installation] (#installation)
+    1. [Installation](#installation)
     2. [Usage](#usage)
     3. [License](#license)
-    4. [Contributions](#contributions)
+    4. [Credits](#credits)
     5. [Tests](#tests)
     6. [Questions](#questions)
     
@@ -98,9 +98,9 @@ function generateReadMe(answers) {
 
     ${renderLicenseSection(answers.license)}
 
-    ## Contributions
+    ## Credits
 
-    ${answers.contributions}
+    ${answers.credits}
 
     ## Tests
 
@@ -108,17 +108,17 @@ function generateReadMe(answers) {
 
     ## Contact Me
 
-    Github: (https://github.com/${answers.github})
+    Github: [https://github.com/${answers.github}](https://github.com/${answers.github})
     Email: ${answers.email}`;
     
-    return readMeContent;
+    return readMeContent.trim(); // Trim leading spaces
 } 
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (error) => {
         if (error) {
-            console.log(error);
+            console.log('Error. README cannot be generated:', error.message);
         } else {
             console.log('Your README has been generated!')
         }
