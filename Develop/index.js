@@ -1,12 +1,8 @@
 // TODO: Include packages needed for this application
-
 const fs = require('fs'); // File system module for file operations
 const inquirer = require('inquirer'); // Inquirer for user prompts
 
-const {
-    renderLicenseBadge,
-    renderLicenseSection,
-} = require('./utils/generateMarkdown');
+const { renderLicenseBadge, renderLicenseLink, renderLicenseSection, generateMarkdown } = require('./utils/generateMarkdown');
 const { error } = require('console');
 
 // TODO: Create an array of questions for user input
@@ -68,8 +64,8 @@ const questions = [
     },
 ];
 
-//Function to generate README
-function createReadMe(answers) {
+//Function to generate
+function generateReadMe(answers) {
     const readMeContent = `
     # ${answers.title} ${renderLicenseBadge(answers.license)}
     
@@ -108,7 +104,7 @@ function createReadMe(answers) {
 
     ## Contact Me
 
-    Github: [https://github.com/${answers.github}](https://github.com/${answers.github})
+    Github:[https://github.com/${answers.github}](https://github.com/${answers.github})
     Email: ${answers.email}`;
     
     return readMeContent.trim(); // Trim leading spaces
@@ -116,8 +112,8 @@ function createReadMe(answers) {
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (error) => {
-        if (error) {
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
             console.log('Error. README cannot be generated:', error.message);
         } else {
             console.log('Your README has been generated!')
@@ -128,7 +124,7 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((answers) => {
-        const readMeTable = createReadMe(answers);
+        const readMeTable = generateReadMe(answers);
         writeToFile('README.md', readMeTable);
     });
 }
