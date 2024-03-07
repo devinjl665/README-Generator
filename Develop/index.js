@@ -44,7 +44,7 @@ const questions = [
 
     {
         type: 'input',
-        name: 'credits',
+        name: 'contributions',
         message: 'What resources were used to create this project?',
     },
     {
@@ -78,7 +78,7 @@ function generateReadMe(answers) {
     1. [Installation](#installation)
     2. [Usage](#usage)
     3. [License](#license)
-    4. [Credits](#credits)
+    4. [Contributions](#contributions)
     5. [Tests](#tests)
     6. [Questions](#questions)
     
@@ -94,15 +94,15 @@ function generateReadMe(answers) {
 
     ${renderLicenseSection(answers.license)}
 
-    ## Credits
+    ## Contributions
 
-    ${answers.credits}
+    ${answers.contributions}
 
     ## Tests
 
     ${answers.test}
 
-    ## Contact Me
+    ## Questions
 
     Github:[https://github.com/${answers.github}](https://github.com/${answers.github})
     Email: ${answers.email}`;
