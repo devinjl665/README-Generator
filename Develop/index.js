@@ -2,7 +2,7 @@
 const fs = require('fs'); // File system module for file operations
 const inquirer = require('inquirer'); // Inquirer for user prompts
 
-const { renderLicenseBadge, renderLicenseLink, renderLicenseSection, generateMarkdown } = require('./utils/generateMarkdown');
+const { renderLicenseBadge, renderLicenseSection } = require('./utils/generateMarkdown');
 const { error } = require('console');
 
 // TODO: Create an array of questions for user input
