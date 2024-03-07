@@ -1,36 +1,33 @@
-// TODO: Include packages needed for this application
+// Packages needed for this application
 const fs = require('fs'); // File system module for file operations
 const inquirer = require('inquirer'); // Inquirer for user prompts
 
+// Import functions from the generateMarkdown module
 const { renderLicenseBadge, renderLicenseSection } = require('./utils/generateMarkdown');
 const { error } = require('console');
 
-// TODO: Create an array of questions for user input
+// An array of questions for user input
 const questions = [
     {
         type: 'input',
         name: 'title',
         message: 'Enter the name of your project.'
     },
-
     {
         type: 'input',
         name: 'description',
         message: 'Write a description for your project.'
     },
-
     {
         type: 'input',
         name: 'installation',
         message: 'What are the installation instructions of this project?'
     },
-
     {
         type: 'input',
         name: 'usage',
         message: 'How do you use this project?',
     },
-
     {
         type: 'list',
         name: 'license',
@@ -41,7 +38,6 @@ const questions = [
             { name: 'None', value: 'None'},
         ],
     },
-
     {
         type: 'input',
         name: 'contributions',
@@ -64,7 +60,7 @@ const questions = [
     },
 ];
 
-//Function to generate
+// Function to generate README content based on user answers
 function generateReadMe(answers) {
     const readMeContent = `
     # ${answers.title} ${renderLicenseBadge(answers.license)}
@@ -110,7 +106,7 @@ function generateReadMe(answers) {
     return readMeContent.trim(); // Trim leading spaces
 } 
 
-// TODO: Create a function to write README file
+// A function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
         if (err) {
@@ -121,13 +117,17 @@ function writeToFile(fileName, data) {
     });
 }
 
-// TODO: Create a function to initialize app
+// A function to initialize the application
 function init() {
+    // Prompt the user with questions
     inquirer.prompt(questions).then((answers) => {
+        // Generate README content based on user answers
         const readMeTable = generateReadMe(answers);
+        // Write the generated README content to a file
         writeToFile('README.md', readMeTable);
     });
 }
 
-// Function call to initialize app
+// Function call to initialize the application
 init();
+
