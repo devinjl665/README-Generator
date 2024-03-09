@@ -63,45 +63,45 @@ const questions = [
 // Function to generate README content based on user answers
 function generateReadMe(answers) {
     const readMeContent = `
-    # ${answers.title} ${renderLicenseBadge(answers.license)}
+# ${answers.title} ${renderLicenseBadge(answers.license)}
     
-    ## Description
+## Description
     
-    ${answers.description}
+${answers.description}
     
-    ## Directory
+## Directory
     
-    1. [Installation](#installation)
-    2. [Usage](#usage)
-    3. [License](#license)
-    4. [Contributions](#contributions)
-    5. [Tests](#tests)
-    6. [Questions](#questions)
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [License](#license)
+4. [Contributions](#contributions)
+5. [Tests](#tests)
+6. [Questions](#questions)
     
-    ## Installation 
+## Installation 
 
-    ${answers.installation}
+${answers.installation}
 
-    ## Usage
+## Usage
 
-    ${answers.usage}
+${answers.usage}
 
-    ## License
+## License
 
-    ${renderLicenseSection(answers.license)}
+${renderLicenseSection(answers.license)}
 
-    ## Contributions
+## Contributions
 
-    ${answers.contributions}
+${answers.contributions}
 
-    ## Tests
+## Tests
 
-    ${answers.test}
+${answers.test}
 
-    ## Questions
+## Questions
 
-    Github:[https://github.com/${answers.github}](https://github.com/${answers.github})
-    Email: ${answers.email}`;
+Github:[https://github.com/${answers.github}](https://github.com/${answers.github})
+Email: ${answers.email}`;
     
     return readMeContent.trim(); // Trim leading spaces
 } 
@@ -124,7 +124,7 @@ function init() {
         // Generate README content based on user answers
         const readMeTable = generateReadMe(answers);
         // Write the generated README content to a file
-        writeToFile('README.md', readMeTable);
+        writeToFile('./examples/README.md', readMeTable);
     });
 }
 
